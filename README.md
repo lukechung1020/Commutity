@@ -6,9 +6,14 @@ This browser based web application to ...
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
+<<<<<<< HEAD
+* ...
+* Ella
+=======
 * Luke Chung
 * Ian
 * ...
+>>>>>>> d253363031c5c0d8c0fd6fe4aef1e3e6c11229fb
 * ...
 	
 ## 3. Technologies and Resources Used
@@ -40,7 +45,7 @@ What we'd like to build in the future:
 ## 7. Contents of Folder
 Content of the project folder:
 
-```
+
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing HTML file, this is what users see when you come to url
