@@ -39,6 +39,10 @@ What we'd like to build in the future:
 ## 7. Contents of Folder
 Content of the project folder:
 
+## 8. General Info
+This browser based web application to...
+* This is Ella. I am excited to this project because this is the very first project that im gonna make as a group. 
+* ...
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
