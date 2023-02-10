@@ -17,6 +17,9 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <!-- Other libraries go here -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Signika+Negative:wght@400;700&display=swap');
+      </style>
 
     <!-- Link to styles of your own -->
     <link rel="stylesheet" href="styles/style.css">
@@ -26,34 +29,40 @@
 
 
 <body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
     <nav>
         <div id="header">
             <!-- As a heading -->
-
-            <nav class="navbar navbar-light bg-light">
-                <div class="container-fluid justify-content-center">
-                    <a class="navbar-brand" href="#">
-                        <img src="images/icons8-weather-64.png" alt="" width="30" height="24">
-                    </a>
-                    <span class="navbar-brand mb-0 h1 text-primary">App's Name</span>
-                </div>
-            </nav>
-            <div class="hamburger-menu">
-                <label for="menu-btn-check" class="menu-btn"><span></span></label>
+            <!-- <div class="fixe"> -->
+                <nav class="navbar fixed-top relative navbar-light bg-light">
+                    <div class="container-fluid justify-content-center">
+                        <a class="navbar-brand" href="#">
+                            <img src="images/icons8-weather-64.png" alt="" width="30" height="24">
+                        </a>
+                        <span class="navbar-brand mb-0 h1 text-primary">App's Name</span>
+                    </div>
+                    <div class="hamburger-menu">
+                        <label for="menu-btn-check" class="menu-btn"><span></span></label>
+                    </div>
+                </nav>
+                
             </div>
         </div>
     </nav>
     <main>
         <article>
-            <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+            <div class="container body col-xl-10 col-xxl-8 px-4 py-5">
                 <div class="row align-items-center g-lg-5 py-5">
-                    <div class="col-lg-7 text-center text-lg-start">
-                        <h1 class="display-4 fw-bold lh-1 mb-3">Welcome to XXXXX!</h1>
-                        <p class="col-lg-10 fs-4">Our application <br> would change your life better! <br> Access any
+                    <div class="col-lg-7 text-center  text-lg-start">
+                        <h1 class="display-4 fw-bold lh-1 text-warning  bg-light justify-content-center mb-3 border rounded-3 font1 text-center" >Welcome to
+                            XXXXX!</h1>
+                        <p class="col-lg-10 text-info fs-4 font2 text-center">Our application <br> would change your life better! <br> Access any
                             local inforamtion <br> by sign up here!</p>
                     </div>
                     <div class="col-md-10 mx-auto col-lg-5">
-                        <form class="p-4 p-md-5 border rounded-3 bg-light">
+                        <form class="p-4 p-md-5 border-4 rounded-2 bg-light">
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="floatingInput"
                                     placeholder="name@example.com">
@@ -78,10 +87,6 @@
             </div>
         </article>
     </main>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->

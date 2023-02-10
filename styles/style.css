@@ -1,3 +1,7 @@
+body {
+    background-color: #f8f7ff;
+}
+
 #header {
     height: 60px;
 }
@@ -5,6 +9,14 @@
 #header>p {
     text-align: center;
     margin-bottom: 0;
+}
+
+.font1 {
+    font-family: 'Fredoka One', cursive;
+}
+
+.font2 {
+    font-family: 'Signika Negative', sans-serif;
 }
 
 .menu-btn {
@@ -64,4 +76,17 @@
 
 .text-primary {
     color: #f8f7ff !important;
+}
+
+.btn-primary {
+    background-color: #EAC4D5 !important;
+    border-color: #EAC4D5;
+}
+
+.text-warning {
+    color: #d7efff !important;
+}
+
+.text-info {
+    color: #f071aa !important;
 }
