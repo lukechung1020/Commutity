@@ -90,3 +90,8 @@ body {
 .text-info {
     color: #f071aa !important;
 }
+
+.material-icons {
+    padding-left: 10%;
+    padding-right: 10%;
+}
