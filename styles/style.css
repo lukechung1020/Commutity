@@ -1,6 +1,17 @@
-body {
-    background-color: #f8f7ff;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+/* #f8f7ff */
+body {
+    background-color: #eaf0f7;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
 
 #header {
     height: 60px;
@@ -144,6 +155,7 @@ body {
 .icons {
     width: 50px;
     height: 50px;
+    filter: drop-shadow(2px 2px 2px rgba(160, 160, 160, 0.7));
 }
 
 .post {
@@ -155,6 +167,7 @@ body {
 .profile-icon {
     width: 50px;
     height: 45px;
+    filter: drop-shadow(2px 4px 2px rgba(160, 160, 160, 0.7));
 }
 
 .icon-container {
@@ -194,4 +207,27 @@ body {
 .material-icons {
     padding-left: 10%;
     padding-right: 10%;
+}
+
+
+/* Navbar at Bottom */
+
+.wrapper {
+    width: 80%;
+    border-radius: 30px;
+    height: 50px;
+    background: #ffeaf3;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.281);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 5;
+    position: relative;
+}
+
+/* MainContainer */
+#main-container {
+    display: grid;
+    grid-template-rows: repeat(7, 1fr);
+    gap: 10%;
 }
