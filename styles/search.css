@@ -1,0 +1,37 @@
+.searchBar {
+    background: #95B8D1;
+    box-sizing: content-box;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: Roboto;
+    line-height: 50px;
+    width: 80vw;
+    margin-bottom: 10%;
+    /* margin: 10vh auto; */
+}
+
+.tag {
+    background: #333;
+    margin: 5px;
+    color: white;
+    padding: 10px 15px 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.281);
+}
+
+.tag:hover {
+    background: #222;
+}
+
+.remove:before {
+    content: '×';
+    padding-left: 15px;
+}
+
+input[name="search"] {
+    padding: 10px;
+    border: 1px solid transparent;
+    font-size: 16px;
+    background: white;
+}
