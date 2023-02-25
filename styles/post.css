@@ -1,0 +1,12 @@
+body {
+    background-color: #95B8D1
+}
+
+.post-card>.card {
+    border-width: 5px;
+    border-color: #B8E0D2;
+}
+
+.post-card>.card-body {
+    background-color: #D6EADF;
+}
