@@ -1,92 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>BBY22 Project</title>
-    <meta name="BBY22" content="BBY22 App" />
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <title>BBY22 Project</title>
+  <meta name="BBY22" content="BBY22 App">
 
-    <!-- Bootstrap Library CSS CDN go here -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <!-- Boostrap Library JS CDN  go here -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Other libraries go here -->
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Signika+Negative:wght@400;700&display=swap");
-    </style>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!--Firebase-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-    <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="styles/style.css" />
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
-  </head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-    <nav>
-      <div id="header">
-        <!-- As a heading -->
-        <!-- <div class="fixe"> -->
-        <nav class="navbar fixed-top relative navbar-light bg-light">
-          <div class="container-fluid justify-content-center">
-            <a class="navbar-brand" href="#">
-              <img
-                src="images/icons8-weather-64.png"
-                alt=""
-                width="30"
-                height="24"
-              />
-            </a>
-            <span class="navbar-brand mb-0 h1 text-primary">App's Name</span>
-          </div>
-          <div class="hamburger-menu">
-            <label for="menu-btn-check" class="menu-btn"><span></span></label>
-          </div>
-        </nav>
-      </div>
-    </nav>
-    <div class="collapse" id="navbarToggleExternalContent">
-      <div class="bg-light shadow-3 p-4">
-        <button class="btn btn-link btn-block border-bottom m-0">Link 1</button>
-        <button class="btn btn-link btn-block border-bottom m-0">Link 2</button>
-        <button class="btn btn-link btn-block m-0">Link 3</button>
-      </div>
+  <!-- Bootstrap Library CSS CDN go here -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Boostrap Library JS CDN  go here -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <!-- Other libraries go here -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Signika+Negative:wght@400;700&display=swap');
+  </style>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Firebase-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+  <!-- drawer.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
+  <!-- Link to styles of your own -->
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/search.css">
+  <link rel="stylesheet" href="styles/posts.css">
+  <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+
+</head>
+
+<body>
+  <!------------------------------>
+  <!-- Your HTML Layout go here -->
+  <!------------------------------>
+  <nav>
+    <div id="header">
+      <!-- As a heading -->
+      <!-- <div class="fixe"> -->
+      <nav class="navbar fixed-top relative navbar-light bg-light">
+        <div class="container-fluid justify-content-center">
+          <a class="navbar-brand" href="#">
+            <img src="images/icons8-weather-64.png" alt="" width="30" height="24" />
+          </a>
+          <span class="navbar-brand mb-0 h1 text-primary">App's Name</span>
+        </div>
+        <div class="hamburger-menu">
+          <label for="menu-btn-check" class="menu-btn"><span></span></label>
+        </div>
+      </nav>
     </div>
-    <div class="container text-center">
-      <h1>Welcome to XXX</h1>
-      <h2>Change your life as a commuter for the better!</h2>
-      <a href="login.html" class="btn btn-info" role="button">Log in</a>
+  </nav>
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-light shadow-3 p-4">
+      <button class="btn btn-link btn-block border-bottom m-0">Link 1</button>
+      <button class="btn btn-link btn-block border-bottom m-0">Link 2</button>
+      <button class="btn btn-link btn-block m-0">Link 3</button>
     </div>
+  </div>
+  <div class="container text-center">
+    <h1>Welcome to XXX</h1>
+    <h2>Change your life as a commuter for the better!</h2>
+    <a href="login.html" class="btn btn-info" role="button">Log in</a>
+  </div>
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
+  <!---------------------------------------------->
+  <!-- Your own JavaScript functions go here    -->
+  <!---------------------------------------------->
 
-    <!-- Link to scripts of your own -->
-    <script src="./scripts/firebaseAPI_BBY22.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <!-- <script src="./scripts/script.js"></script> -->
-  </body>
+  <!-- Link to scripts of your own -->
+  <script src="./scripts/firebaseAPI_BBY22.js"></script>
+  <script src="./scripts/skeleton.js"></script>
+  <!-- <script src="./scripts/script.js"></script> -->
+</body>
+
 </html>
