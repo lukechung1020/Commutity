@@ -146,3 +146,7 @@ body {
     font-size: 24px;
     font-family: 'Groove';
 }
+
+.sign-in-card {
+    box-shadow: #95B8D1;
+}

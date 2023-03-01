@@ -1,0 +1,35 @@
+<nav class="navbar fixed-top relative navbar-light bg-light">
+    <div class="container-fluid justify-content-center pb-3">
+        <a class="navbar-brand" href="#">
+            <img src="images/icons8-weather-64.png" alt="icon" width="30" height="24">
+        </a>
+        <span class="navbar-brand mb-0 h1 text-primary">App's Name</span>
+        <!--Hamburger menu-->
+        <div class="drawer drawer--right d-lg-none">
+            <div role="banner">
+                <button type="button" class="drawer-toggle drawer-hamburger">
+                    <span class="sr-only">toggle navigation</span>
+                    <span class="drawer-hamburger-icon"></span>
+                </button>
+                <nav class="drawer-nav" role="navigation">
+                    <ul class="drawer-menu">
+                        <li><a class="drawer-brand" href="#">Profile</a></li>
+                        <li><a class="drawer-menu-item" href="#">Link1</a></li>
+                        <li><a class="drawer-menu-item" href="#">Link2</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- jquery & iScroll -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+<!-- drawer.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.drawer').drawer();
+    });
+</script>
