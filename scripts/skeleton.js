@@ -3,7 +3,15 @@
 // (navbar, footer, and other things) into html doc. 
 //---------------------------------------------------
 function loadSkeleton() {
-    console.log($('#navbarPlaceholder').load('./app-elements/nav.html'));
-    console.log($('#footerPlaceholder').load('./app-elements/footer.html'));
+    console.log($('#nav-topPlaceholder').load('./app-elements/nav-top.html'));
+    console.log($('#nav-bottomPlaceholder').load('./app-elements/nav-bottom.html'));
 }
 loadSkeleton();  //invoke the function
+
+// For modal
+var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
