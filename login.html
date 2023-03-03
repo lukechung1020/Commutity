@@ -38,44 +38,18 @@
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
-    <nav>
-        <div id="header">
-            <!-- As a heading -->
-            <!-- <div class="fixe"> -->
-            <nav class="navbar fixed-top relative navbar-light bg-light">
-                <div class="container-fluid justify-content-center">
-                    <a class="navbar-brand" href="#">
-                        <img src="images/icons8-weather-64.png" alt="" width="30" height="24">
-                    </a>
-                    <span class="navbar-brand mb-0 h1 text-primary">App's Name</span>
-                </div>
-                <div class="hamburger-menu">
-                    <label for="menu-btn-check" class="menu-btn"><span></span></label>
-                </div>
-            </nav>
-
-        </div>
+    <nav class="navbar fixed-top relative navbar-light bg-light">
+        <div class="container-fluid justify-content-center">
+            <a class="navbar-brand" href="#">
+                <img src="images/icons8-weather-64.png" alt="" width="30" height="24">
+            </a>
+            <span class="navbar-brand mb-0 h1 text-primary">App's Name</span>
         </div>
     </nav>
-    <main>
-        <article>
-            <div class="container body col-xl-12 col-xxl-12 px-4 py-5">
-                <div class="row align-items-center g-lg-5 py-5">
-                    <div class="col-lg-7 text-center  text-lg-start">
-                        <h1
-                            class="display-4 fw-bold lh-1 text-warning  bg-light justify-content-center mb-3 border rounded-3 font1 text-center">
-                            Welcome to
-                            XXXXX!</h1>
-                        <p class="col-lg-10 text-info fs-4 font2 text-center">Our application <br> would change your
-                            life better! <br> Access any
-                            local inforamtion <br> by sign up here!</p>
-                    </div>
-                    <div id="firebaseui-auth-container"></div>
-                    <div id="loader">Loading...</div>
-                </div>
-            </div>
-        </article>
-    </main>
+    <div class="row align-items-center">
+        <div id="firebaseui-auth-container"></div>
+        <div id="loader">Loading...</div>
+    </div>
 
     <!-- Footer -->
     <!---------------------------------------------->
