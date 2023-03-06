@@ -45,6 +45,16 @@ body {
     width: auto;
 }
 
+nav>div>a>i {
+    position: fixed;
+    top: 8px;
+    left: 10px;
+    display: flex;
+    height: 34px;
+    width: auto;
+    color: black;
+}
+
 .hamburger {
     position: fixed;
     top: 8px;
