@@ -3,7 +3,18 @@
 // (navbar, footer, and other things) into html doc. 
 //---------------------------------------------------
 function loadSkeleton() {
-    console.log($('#nav-topPlaceholder').load('./app-elements/nav-top.html'));
-    console.log($('#nav-bottomPlaceholder').load('./app-elements/nav-bottom.html'));
+
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            // User is signed in.
+            // Do something for the user here.
+            console.log($('#navbarPlaceholder').load('./text/nav_after_login.html'));
+            console.log($('#footerPlaceholder').load('./text/footer.html'));
+        } else {
+            // No user is signed in.
+            console.log($('#navbarPlaceholder').load('./text/nav_before_login.html'));
+            // No footer when no user is logged in.
+        }
+    });
 }
-loadSkeleton();  //invoke the function
+loadSkeleton(); //invoke the function
