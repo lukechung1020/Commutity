@@ -26,7 +26,25 @@
     grid-template-rows: repeat(3, 1fr);
 }
 
+#icon-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 .setting {
     display: flex;
     align-items: center;
+}
+.icon-container {
+    display: grid;
+    grid-template-rows: 1fr 0.5fr;
+}
+
+#profile-name {
+    display: block;
+    margin-top: 5%;
+    margin-left: 5%;
 }

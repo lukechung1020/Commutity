@@ -3,6 +3,7 @@
 // For Post Overlay
 function openPostOverlay() {
   document.getElementById("myPostOverlay").style.width = "100%";
+  document.getElementById("myPostOverlay").style.height = "100%";
 }
 
 function closePostOverlay() {
