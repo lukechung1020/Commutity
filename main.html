@@ -466,10 +466,10 @@
 
   <!--Post overlay-->
   <div id="myPostOverlay" class="post-overlay">
-    <a href="javascript:void(0)" class="closebtn" onclick="closePostOverlay()">&times;</a>
+    <a href="javascript:void(0)" class="closebtn">&times;</a>
 
     <!--Content-->
-    <div class="post-overlay-content">
+    <form class="post-overlay-content" id="postingform">
       <div class="form-group" style="padding:16px;">
         <label> Title of Post: </label>
         <input id="postname" type="text" />
@@ -486,10 +486,9 @@
         <button type="button" class="btn btn-secondary">Video</button>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="padding:16px;">
-        <!--Temporary function of post is only to close overlay, add database function onclick later!!-->
-        <button class="btn btn-primary" type="button" onclick="closePostOverlay()">Post</button>
+        <button class="btn btn-primary" type="submit">Post</button>
       </div>
-    </div>
+    </form>
   </div>
 
   <!--Navigation at Bottom-->
@@ -509,8 +508,7 @@
   <!-- Link to scripts of your own -->
   <script src="./scripts/firebaseAPI_BBY22.js"></script>
   <script src="./scripts/skeleton.js"></script>
-  <!-- <script src="./scripts/script.js"></script> -->
-  <script src="./scripts/search.js"></script>
+  <script src="./scripts/main.js"></script>
   <!-- jquery & iScroll -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
