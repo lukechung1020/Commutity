@@ -35,7 +35,7 @@
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <link rel="stylesheet" href="./styles/style.css">
 
 </head>
 
@@ -45,73 +45,75 @@
     <!------------------------------>
 
     <!-- our own navbar goes here -->
-    <nav id="navbarPlaceholder"></nav>
+    <nav id="navbarPlaceholder" class="fixed-top"></nav>
 
     <!-- the body of your page goes here -->
     <!-- stuff -->
-    <div class="container">
+    <div class="container" style="padding-bottom: 80px;">
         <br>
         <h1>Create a Post</h1>
         <br>
         <form>
             <div class="form-group">
+                <!-- Input form for title of post-->
                 <label for="exampleFormControlInput1">Post Title</label>
                 <input type="text" class="form-control" id="post-title" placeholder="Title">
             </div><br>
             <!-- Button to open filter modal-->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Filters
-              </button><br><br>
-                    <label for="exampleFormControlTextarea1">Text Content</label>
-                    <textarea class="form-control" id="post-text" rows="3" placeholder="Enter text here"></textarea>
-                </div>
-                <br>
-                <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-lg btn-primary pull-right"
-                        onclick="createPost()">Post</button>
-                </div>
+            </button><br><br>
+            <!-- Input for for text content of post-->
+            <label for="exampleFormControlTextarea1">Text Content</label>
+            <textarea class="form-control" id="post-text" rows="3" placeholder="Enter text here"></textarea>
+            <br>
+            <!-- Button for posting-->
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-lg btn-primary pull-right" onclick="createPost()">Post</button>
+            </div>
         </form>
     </div>
 
-      <!-- Search Modal-->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Search Filters</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">Search Icon</span>
-          <input type="text" class="form-control" placeholder="Search" aria-label="Filters"
-            aria-describedby="basic-addon1">
-        </div>
-        <div>
-          Commute Type:
-          <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="btnradio1">Transit</label>
+    <!-- Search Modal-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Search Filters</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Search Icon</span>
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Filters"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div>
+                        Commute Type:
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"
+                                checked>
+                            <label class="btn btn-outline-primary" for="btnradio1">Transit</label>
 
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio2">Car</label>
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btnradio2">Car</label>
 
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label class="btn btn-outline-primary" for="btnradio3">Walk</label>
-          </div>
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btnradio3">Walk</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Apply</button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Apply</button>
-      </div>
     </div>
-  </div>
-</div>
 
     <!-- our own footer goes here-->
-    <nav id="footerPlaceholder"></nav>
+    <nav id="footerPlaceholder" class="fixed-bottom"></nav>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
