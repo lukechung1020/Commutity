@@ -1,9 +1,22 @@
 // Uploading a post to firebase
 function createPost() {
     console.log("inside create post")
-    let Title = document.getElementById("post-title").value;
-    let Text = document.getElementById("post-text").value;
+    let Title = document.getElementById("post-title").value.trim();
+    let Text = document.getElementById("post-text").value.trim();
     console.log(Title, Text);
+
+    if (!Title || !Text) {
+        if (!Title && Text) {
+            alert("Please fill in a Post Title.");
+            return;
+        } else if (Title && !Text) {
+            alert("Please fill in the Text Content.");
+            return;
+        }
+        alert("Please fill in Post Title AND Text Content.");
+        return;
+
+    }
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
