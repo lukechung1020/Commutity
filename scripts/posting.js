@@ -36,18 +36,14 @@ function createPost() {
                         timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     }).then(() => {
                         console.log("Sucessfully added post to firestore");
+                        db.collection("users").doc(userID).update({
+                            posts: firebase.firestore.FieldValue.arrayUnion(postRef.id)
+                        }).then(() => {
+                            console.log("Successfully added post id to users posts array");
+                        })
+
                         // Upload photo
                         uploadPic(postRef.id);
-                    })
-                    // add this post id to posts array in users/users.id
-                    console.log("ID of post that was created:", postRef.id);
-
-                    db.collection("users").doc(userID).update({
-                        posts: firebase.firestore.FieldValue.arrayUnion(postRef.id)
-                    }).then(() => {
-                        console.log("Successfully added post id to users posts array");
-                        // go to thanks.html page after completion
-                        window.location.href = "thanks.html";
                     })
                 })
         } else {
@@ -88,9 +84,10 @@ function uploadPic(postDocID) {
     console.log("inside uploadPic " + postDocID);
     console.log(fileInput.value);
 
-    // Return if there is no fileInput
+    // Return if there is no fileInput and change window to thanks.html
     if (fileInput.value == "") {
         console.log("no file to upload");
+        window.location.href="thanks.html";
         return;
     }
 
@@ -113,6 +110,8 @@ function uploadPic(postDocID) {
                         // AFTER .update is done
                         .then(function () {
                             console.log('Added pic URL to Firestore.');
+                            // change window to thank.html
+                            window.location.href="thanks.html";
                         })
                 })
         })
