@@ -47,7 +47,7 @@ function createPost() {
                     }).then(() => {
                         console.log("Successfully added post id to users posts array");
                         // go to thanks.html page after completion
-                        // window.location.href = "thanks.html";
+                        window.location.href = "thanks.html";
                     })
                 })
         } else {
