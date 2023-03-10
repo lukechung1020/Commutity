@@ -56,7 +56,7 @@
         <form>
             <div class="form-group">
                 <!-- Input form for title of post-->
-                <label for="exampleFormControlInput1">Post Title</label>
+                <label for="titleOfPost">Post Title</label>
                 <input type="text" class="form-control" id="post-title" placeholder="Title">
             </div><br>
             <!-- Button to open filter modal-->
@@ -64,8 +64,16 @@
                 Filters
             </button><br><br>
             <!-- Input for for text content of post-->
-            <label for="exampleFormControlTextarea1">Text Content</label>
+            <label for="textOfPost">Text Content</label>
             <textarea class="form-control" id="post-text" rows="3" placeholder="Enter text here"></textarea>
+            <br>
+            <!-- Choose file-->
+            <label for="imgOfPost">Image Preview</label>
+            <br>
+            <img id="preview-img" width=100 height=100 />
+            <input type="file" id="post-img" accept="image/*" />
+            <br>
+            <button type="button" class="btn btn-secondary" id="remove-img" hidden="hidden" onclick="removeFileSelect()">Cancel</button>
             <br>
             <!-- Button for posting-->
             <div class="d-flex justify-content-end">
