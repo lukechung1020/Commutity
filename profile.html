@@ -36,30 +36,38 @@
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="/styles/profile.css">
 
 </head>
 
 <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-
-    <!-- our own navbar goes here -->
     <nav id="navbarPlaceholder" class="fixed-top"></nav>
-
-    <!-- the body of your page goes here -->
-    <!-- stuff -->
-
-    <!-- our own footer goes here-->
+    <div id="icon-holder">
+        <img class="icon-img" src="./images/icon.jpg" alt="">
+        <p id="user-name">User Name</p>
+    </div>
+    <div id="profile-holder">
+        <div id="account-setting" class="borders-all setting shadow">
+            <h1>Account Setting<br>
+            </h1>
+        </div>
+        <div id="tag-setting" class="borders setting shadow">
+            <h1>Tag Setting</h1>
+        </div>
+        <div id="notification" class="borders setting shadow">
+            <h1>Notification Setting</h1>
+        </div>
+    </div>
     <nav id="footerPlaceholder" class="fixed-bottom"></nav>
-
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_BBY22.js"></script>
     <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/profile.js"></script>
     <script src="./scripts/script.js"></script>
-
+    <!-- <script src="./scripts/script.js"></script> -->
+    <!-- Code injected-->
 </body>
 
 </html>
