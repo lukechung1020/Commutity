@@ -23,36 +23,32 @@
 
 function displayPosts(collection) {
     let cardTemplate = document.getElementById("postsCardTemplate");
+    let noImagecardTemplate = document.getElementById("n-postsCardTemplate");
 
-    db.collection(collection).get()   //the collection called "hikes"
+    db.collection(collection).get()   
         .then(allPosts => {
-            //var i = 1;  //Optional: if you want to have a unique ID for each hike
-            allPosts.forEach(doc => { //iterate thru each doc
-                var title = doc.data().postTitle;       // get value of the "name" key
-                var postText = doc.data().postText;  // get value of the "details" key
-                var timeStamp = doc.data().timestamp;    //get unique ID to each hike to be used for fetching right image
-                var userID = doc.data().userID; //gets the length field
-                var image = doc.data().image; //gets the length field
+            allPosts.forEach(doc => { 
+                var title = doc.data().postTitle;
+                var postText = doc.data().postText;
+                var timeStamp = doc.data().timestamp; 
+                var userID = doc.data().userID;
+                var image = doc.data().image; 
                 let newcard = cardTemplate.content.cloneNode(true);
-
-                //update title and text and image
+                
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-text').innerHTML = postText;
-                newcard.querySelector('.card-text').innerHTML = postText;
-                newcard.querySelector('.card-image').src = image; //Example: NV01.jpg
-
-                //Optional: give unique ids to all elements for future use
-                // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-                // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-                // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
-
-                //attach to gallery, Example: "hikes-go-here"
+                console.log()
+                if (!(image === "" )) {
+                    newcard.querySelector('.card-image').src = image;
+                } else {
+                    newcard.querySelector('.card-image').src = "./images/icon.jpg";
+                }
+                
                 document.getElementById(collection + "-go-here").appendChild(newcard);
-
-                //i++;   //Optional: iterate variable to serve as unique ID
+                
             })
         })
 }
 
-displayPosts("posts")  //input param is the name of the collection
+displayPosts("posts") 
 
