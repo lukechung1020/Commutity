@@ -12,7 +12,7 @@ function populateUserInfo() {
                 .then(userDoc => {
                     //get the data fields of the user
                     var userName = userDoc.data().name;
-                    var userCommuteType = userDoc.data().school;
+                    var userCommuteType = userDoc.data().commuteType;
                     var userCity = userDoc.data().city;
 
                     //if the data fields are not empty, then write them in to the form.
@@ -21,9 +21,6 @@ function populateUserInfo() {
                     }
                     if (userCommuteType != null) {
                         document.getElementById("commuteSelect").value = userCommuteType;
-                    }
-                    if (userCity != null) {
-                        document.getElementById("citySelect").value = userCity;
                     }
                 })
         } else {
@@ -51,12 +48,14 @@ function saveUserInfo() {
     //b) update user's document in Firestore
     currentUser.update({
         name: userName,
-        school: userSchool,
+        commuteType: userCommuteType,
         city: userCity
     })
         .then(() => {
             console.log("Document successfully updated!");
         })
     //c) disable edit 
-    document.getElementById('personalInfoFields').disabled = true;
+    document.getElementById('personalInfoFields').visible = false;
+
 }
+
