@@ -36,6 +36,7 @@
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/main.css">
 
 </head>
 
@@ -49,7 +50,27 @@
 
     <!-- the body of your page goes here -->
     <!-- stuff -->
+    <div class="container">
+        <h1>Newer Posts</h1>
+        <!-- Here is the container for cards  -->
+        <div class="container">
+            <div id="posts-go-here" class="row row-cols-auto">
+                <template id="postsCardTemplate">
+                    <div class="card py-2 mb-3 mx-2">
+                        <img class="card-image card-img-top" src=" ..." alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title"><span id="title-goes-here"></span></h5>
+                            <br />
+                            <p class="card-text"><span id="postText-goes-here"></span></p>
+                            <!-- <p class="card-text"><span id="timestamp-goes-here"></span></p> -->
+                            <a class="btn btn-primary card-href">See more detail</a>
+                        </div>
+                    </div>
+                </template>
 
+            </div>
+        </div>
+    </div>
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder" class="fixed-bottom"></nav>
 
@@ -57,6 +78,8 @@
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_BBY22.js"></script>
+
+    <script src="./scripts/main.js"></script>
     <script src="./scripts/skeleton.js"></script>
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="./scripts/parsingText.js"></script>

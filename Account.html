@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Account Setting</h1>
+        <form>
+            <fieldset class="mb-3" id="personalInfoFields" disabled>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Commute Type</label>
+                    <select name="commute-type" id="commuteSelect">
+                        <option value="Transit">Transit</option>
+                        <option value="Car">Car</option>
+                        <option value="Walk">Walk</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <select name="City" id="citySelect">
+                        <option value="Vancouver">Vancouver</option>
+                        <option value="Burnaby">Burnaby</option>
+                        <option value="North Vancouver">North Vancouver</option>
+                    </select>
+                </div>
+            </fieldset>
+            <div class="d-flex justify-content-end mt-5">
+                <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
+                <span style="width: 10px"></span>
+                <button type="button" class="btn btn-info" onclick="saveUserInfo()">Save</button>
+            </div>
+        </form>
+    </div>
+    <script src="./scripts/profile.js"></script>
+</body>
+
+</html>
