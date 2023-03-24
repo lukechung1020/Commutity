@@ -61,7 +61,7 @@
             </div><br>
             <!-- Button to open filter modal-->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Filters
+                Choose Filters
             </button>
             <br>Selected Filters:<br>
             <div id="selectedFilters"></div>
@@ -93,7 +93,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Search Filters</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" id="closeBtn" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!--Select form to pick commute type-->
@@ -112,13 +112,15 @@
                     </select>
 
                     <!--Bus search options-->
-                    <input class="form-control" id="busStopSearch" list="busStopOptions" hidden="hidden"
-                        placeholder="Search Bus Stops...">
+                    <!--When an option is selected, input field is disabled, clear search button appears-->
+                    <input class="form-control" id="busStopSearch" onkeyup="disableInputOnDatalistChoice(event)"
+                        list="busStopOptions" hidden="hidden" placeholder="Search Bus Stops...">
                     <datalist id="busStopOptions">
                         <!--Options populated from code in searchFilters.js-->
                     </datalist>
-                    <input class="form-control" id="busRouteSearch" list="busRouteOptions" hidden="hidden"
-                        placeholder="Search Bus Routes...">
+                    <!--When an option is selected, input field is disabled, clear search button appears-->
+                    <input class="form-control" id="busRouteSearch" onkeyup="disableInputOnDatalistChoice(event)"
+                        list="busRouteOptions" hidden="hidden" placeholder="Search Bus Routes...">
                     <datalist id="busRouteOptions">
                         <!--Options populated from code in searchFilters.js-->
                     </datalist>
@@ -130,28 +132,34 @@
                         <option value="Canada Line">Canada Line</option>
                     </select>
                     <!--Search for Expo Line Stations-->
-                    <input class="form-control expoLineStations" list="expoStationsOptions" hidden="hidden"
-                        placeholder="Search Expo Line Stations...">
+                    <!--When an option is selected, input field is disabled, clear search button appears-->
+                    <input class="form-control expoLineStations" onkeyup="disableInputOnDatalistChoice(event)"
+                        list="expoStationsOptions" hidden="hidden" placeholder="Search Expo Line Stations...">
                     <datalist id="expoStationsOptions">
                         <!--Options populated from code in searchFilters.js-->
                     </datalist>
                     <!--Search for Millenium Line Stations-->
-                    <input class="form-control milleniumLineStations" list="milleniumStationsOptions" hidden="hidden"
-                        placeholder="Search Millenium Line Stations...">
+                    <!--When an option is selected, input field is disabled, clear search button appears-->
+                    <input class="form-control milleniumLineStations" onkeyup="disableInputOnDatalistChoice(event)"
+                        list="milleniumStationsOptions" hidden="hidden" placeholder="Search Millenium Line Stations...">
                     <datalist id="milleniumStationsOptions">
                         <!--Options populated from code in searchFilters.js-->
                     </datalist>
                     <!--Search for Canada Line Stations-->
-                    <input class="form-control canadaLineStations" list="canadaStationsOptions" hidden="hidden"
-                        placeholder="Search Canada Line Stations...">
+                    <!--When an option is selected, input field is disabled, clear search button appears-->
+                    <input class="form-control canadaLineStations" onkeyup="disableInputOnDatalistChoice(event)"
+                        list="canadaStationsOptions" hidden="hidden" placeholder="Search Canada Line Stations...">
                     <datalist id="canadaStationsOptions">
                     </datalist>
-
+                    <br>
+                    <!--Button that resets all searching fields-->
+                    <button type="button" class="btn btn-secondary" id="clearSearch" onclick="clearSearches()"
+                        hidden="hidden">Clear Searches</button>
                     </hr>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" onclick="resetFilters()">Reset</button>
-                    <button type="button" class="btn btn-primary">Apply</button>
+                    <button type="button" class="btn btn-primary" id="applyBtn" onclick="applyFilters()">Apply</button>
                 </div>
             </div>
         </div>
