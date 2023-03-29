@@ -52,26 +52,32 @@
     <div class="container" style="padding-bottom: 80px;">
         <br>
         <h1>Create a Post</h1>
-        <br>
         <form>
             <div class="form-group">
-                <!-- Input form for title of post-->
-                <label for="titleOfPost">Post Title</label>
+                <!-- Input form for title 
+                    of post-->
+                <label for="titleOfPost"><b>Post Title</b></label>
                 <input type="text" class="form-control" id="post-title" placeholder="Title">
             </div><br>
+
             <!-- Button to open filter modal-->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Choose Filters
             </button>
-            <br>Selected Filters:<br>
-            <div id="selectedFilters"></div>
+            <br><b>Selected Filters:</b><br>
+            <div id="selectedFilters">
+            </div>
+            <!--Clear selected filters-->
+            <button type="button" id="clearFilters" class="btn btn-secondary btn-sm" hidden="hidden" style="margin-top: 5px;" onclick="clearSelectedFilters()">Clear Filters</button>
             <br><br>
+
             <!-- Input for for text content of post-->
-            <label for="textOfPost">Text Content</label>
+            <label for="textOfPost"><b>Text Content</b></label>
             <textarea class="form-control" id="post-text" rows="3" placeholder="Enter text here"></textarea>
             <br>
+
             <!-- Choose file-->
-            <label for="imgOfPost">Image Preview</label>
+            <label for="imgOfPost"><b>Image Preview</b></label>
             <br>
             <img id="preview-img" width=100 height=100 />
             <input type="file" id="post-img" accept="image/*" />
@@ -79,6 +85,7 @@
             <button type="button" class="btn btn-secondary" id="remove-img" hidden="hidden"
                 onclick="removeFileSelect()">Cancel</button>
             <br>
+            
             <!-- Button for posting-->
             <div class="d-flex justify-content-end">
                 <button type="button" class="btn btn-lg btn-primary pull-right" onclick="createPost()">Post</button>
@@ -92,17 +99,23 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Search Filters</h5>
-                    <button type="button" class="btn-close" id="closeBtn" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="staticBackdropLabel">Select Filters</h5>
+                    <button type="button" class="btn-close" id="closeBtn" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+
                     <!--Select form to pick commute type-->
+                    <div class="mandatory">Required*
+                        <img class="help_icon icons" onclick="requiredHelp()" src="/images/help-icon.jpeg">
+                    </div>
                     <select class="form-select select-commute" aria-label="Default select example">
                         <option selected>Select Commute Type</option>
                         <option value="Transit">Transit</option>
                         <option value="Car">Car</option>
                         <option value="Walk">Walk</option>
                     </select>
+
                     <!--Select form to pick transit-->
                     <select class="form-select select-transit" aria-label="Default select example" id="transitType"
                         hidden="hidden">
@@ -110,7 +123,16 @@
                         <option value="Bus">Bus</option>
                         <option value="Skytrain">Skytrain</option>
                     </select>
-
+                    <div class="optional">Optional*
+                        <img class="help_icon" onclick="optionalHelp()" src="/images/help-icon.jpeg">
+                    </div>
+                    <!--Location search options-->
+                    <input class="form-control" id="locationSearch" onkeyup="disableInputOnDatalistChoice(event)"
+                        list="locationOptions" hidden="hidden" placeholder="Search Locations...">
+                        <datalist id="locationOptions">
+                            <!--Options populated from code in searchFilters.js-->
+                        </datalist>
+                    </input>
                     <!--Bus search options-->
                     <!--When an option is selected, input field is disabled, clear search button appears-->
                     <input class="form-control" id="busStopSearch" onkeyup="disableInputOnDatalistChoice(event)"
@@ -118,6 +140,7 @@
                     <datalist id="busStopOptions">
                         <!--Options populated from code in searchFilters.js-->
                     </datalist>
+                    </input>
                     <!--When an option is selected, input field is disabled, clear search button appears-->
                     <input class="form-control" id="busRouteSearch" onkeyup="disableInputOnDatalistChoice(event)"
                         list="busRouteOptions" hidden="hidden" placeholder="Search Bus Routes...">
@@ -138,6 +161,7 @@
                     <datalist id="expoStationsOptions">
                         <!--Options populated from code in searchFilters.js-->
                     </datalist>
+                    </input>
                     <!--Search for Millenium Line Stations-->
                     <!--When an option is selected, input field is disabled, clear search button appears-->
                     <input class="form-control milleniumLineStations" onkeyup="disableInputOnDatalistChoice(event)"
@@ -145,15 +169,15 @@
                     <datalist id="milleniumStationsOptions">
                         <!--Options populated from code in searchFilters.js-->
                     </datalist>
+                    </input>
                     <!--Search for Canada Line Stations-->
                     <!--When an option is selected, input field is disabled, clear search button appears-->
                     <input class="form-control canadaLineStations" onkeyup="disableInputOnDatalistChoice(event)"
                         list="canadaStationsOptions" hidden="hidden" placeholder="Search Canada Line Stations...">
                     <datalist id="canadaStationsOptions">
                     </datalist>
-                    <br>
                     <!--Button that resets all searching fields-->
-                    <button type="button" class="btn btn-secondary" id="clearSearch" onclick="clearSearches()"
+                    <button type="button" class="btn btn-secondary btn-sm" id="clearSearch" style="margin-top: 5px;" onclick="clearSearches()"
                         hidden="hidden">Clear Searches</button>
                     </hr>
                 </div>

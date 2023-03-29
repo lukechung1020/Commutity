@@ -1,4 +1,42 @@
 // Arrays with different filter possible values
+const location_data = [
+    "Highway One",
+    "Abbotsford",
+    "Burnaby",
+    "Coquitlam",
+    "Chilliwack",
+    "Delta",
+    "Hope",
+    "Langley",
+    "Maple Ridge",
+    "Mission",
+    "New Westminster",
+    "Port Moody",
+    "Richmond",
+    "Squamish",
+    "Surrey",
+    "Downtown Vancouver",
+    "North Vancouver",
+    "Whistler",
+]
+
+const commute_type = [
+    "Transit",
+    "Car",
+    "Walk",
+]
+
+const transit_type = [
+    "Bus",
+    "Skytain"
+]
+
+const skytrain_line = [
+    "Expo Line",
+    "Millenium Line",
+    "Canada Line",
+]
+
 const expo_line_stations = [
     "Waterfront Station",
     "Burrard Station",

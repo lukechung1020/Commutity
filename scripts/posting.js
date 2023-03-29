@@ -4,19 +4,34 @@ function createPost() {
     let Title = document.getElementById("post-title").value.trim();
     let Text = document.getElementById("post-text").value.trim();
 
-    // Validation that both Post title and Text content is not empty or whitespace
-    // Displays to the user, what input is not filled out correctly in the form of an alert
-    if (!Title || !Text) {
-        if (!Title && Text) {
-            alert("Please fill in a Post Title.");
-            return;
-        } else if (Title && !Text) {
-            alert("Please fill in the Text Content.");
-            return;
-        }
-        alert("Please fill in Post Title AND Text Content.");
+    // Validation for required fields which are title, text, and filters
+    if (!Title && !Text && filterValuesArr.length == 0) {
+        // All fields are empty
+        alert("Please fill out Post Title, Text Content AND select filters!");
         return;
-
+    } else if (Title && !Text && filterValuesArr.length == 0) {
+        // Only title is filled
+        alert("Please fill out Text Content AND select filters!");
+        return;
+    } else if (!Title && Text && filterValuesArr.length == 0) {
+        // Only text is filled
+        alert("Please fill out Post Title AND select filters!");
+        return;
+    } else if (!Title && Text && filterValuesArr.length > 0) {
+        // Only filters selected
+        alert("Please fill out Post Title AND Text Content!");
+        return;
+    } else if (Title && Text && filterValuesArr.length == 0) {
+        // Only filters not selected
+        alert("Please select filters!");
+        return;
+    } else if (Title && !Text && filterValuesArr.length > 0) {
+        // Only text not filled
+        alert("Please fill out Text Content!");
+        return;
+    } else if (!Title && Text && filterValuesArr.length > 0) {
+        // Only title not filled
+        alert("Please fill out Post Title!");
     }
 
     firebase.auth().onAuthStateChanged(user => {
@@ -33,6 +48,7 @@ function createPost() {
                         postTitle: Title,
                         postText: Text,
                         image: "",
+                        filters: filterValuesArr,
                         timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     }).then(() => {
                         console.log("Sucessfully added post to firestore");

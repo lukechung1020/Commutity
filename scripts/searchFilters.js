@@ -7,6 +7,9 @@ const selectCommuteType = document.querySelector(".select-commute");
 // Select form pointer for transit type
 const selectTransitType = document.querySelector(".select-transit");
 
+// Pointer to datalist search for location
+const searchLocations = document.querySelector("#locationSearch");
+
 // Pointer to datalist search for bus routes and stops
 const busRoute = document.querySelector("#busRouteSearch");
 const busStop = document.querySelector("#busStopSearch");
@@ -28,13 +31,17 @@ selectCommuteType.addEventListener("change", (event) => {
     // When default is selected, hide all other options
     if (selectedElement == "Transit") {
         resetTransit();
+        resetLocation();
         selectTransitType.removeAttribute("hidden");
     } else if (selectedElement == "Car" || selectedElement == "Walk") {
         resetTransit();
+        resetLocation();
         selectTransitType.setAttribute("hidden", "hidden");
+        searchLocations.removeAttribute("hidden");
     } else {
         selectTransitType.setAttribute("hidden", "hidden");
         resetTransitType();
+        resetLocation();
     }
 });
 
@@ -81,6 +88,10 @@ skytrainOption.addEventListener("change", (event) => {
 function resetFilters() {
     selectCommuteType.selectedIndex = 0;
     resetTransit();
+    resetLocation();
+    if (filterValuesArr.length > 0) {
+        clearSelectedFilters();
+    }
 }
 
 // Reset transit type and all other nested fields
@@ -88,6 +99,12 @@ function resetTransit() {
     selectTransitType.selectedIndex = 0;
     selectTransitType.setAttribute("hidden", "hidden");
     resetTransitType();
+}
+
+// Reset location datalist
+function resetLocation() {
+    locationSearch.value = "";
+    locationSearch.setAttribute("hidden", "hidden");
 }
 
 // Reset all search datalists and skytain line 
@@ -114,9 +131,19 @@ function resetSkytrainOptions() {
     selectCanadaLine.setAttribute("hidden", "hidden");
     selectCanadaLine.value = "";
     selectCanadaLine.disabled = false;
+    clearSearch.setAttribute("hidden","hidden");
 }
 
-// populate bus stop options
+// Populate location options
+let listLocations = document.getElementById("locationOptions");
+
+location_data.forEach(function (item) {
+    let optionLocation = document.createElement("option");
+    optionLocation.value = item;
+    listLocations.appendChild(optionLocation)
+})
+
+// Populate bus stop options
 let listBusStop = document.getElementById("busStopOptions");
 
 bus_stops.forEach(function (item) {
@@ -125,7 +152,7 @@ bus_stops.forEach(function (item) {
     listBusStop.appendChild(optionStop);
 });
 
-// populate bus route options
+// Populate bus route options
 let listBusRoute = document.getElementById("busRouteOptions");
 
 bus_routes.forEach(function (item) {
@@ -161,6 +188,34 @@ canada_line_stations.forEach(function (item) {
     listCanadaLine.appendChild(optionCanada);
 });
 
+// Function that populate selected filters section based on filterValuesArr
+function updateSelectedFilters() {
+    // Get pointer to selectedFilters div
+    let selectedFilters = document.getElementById("selectedFilters");
+    if (filterValuesArr.length > 0) {
+        filterValuesArr.forEach(function (item) {
+            let filterBtn = document.createElement("button");
+            filterBtn.setAttribute("type", "button");
+            filterBtn.setAttribute("class", "btn btn-light");
+            filterBtn.setAttribute("styel", "right-padd")
+            filterBtn.innerHTML = item;
+            selectedFilters.appendChild(filterBtn);
+        });
+        document.getElementById("clearFilters").removeAttribute("hidden");
+    } 
+}
+
+// Function that clears the selected filters
+function clearSelectedFilters() {
+    let selectedFilters = document.getElementById("selectedFilters");
+    while (selectedFilters.firstChild) {
+        selectedFilters.removeChild(selectedFilters.lastChild);
+    }
+    document.getElementById("clearFilters").setAttribute("hidden", "hidden");
+    resetFilters();
+    filterValuesArr = [];
+}
+
 // Function that disables putting in input after datalist option is selected
 function disableInputOnDatalistChoice(e) {
     if (!e.keyCode) {
@@ -171,6 +226,8 @@ function disableInputOnDatalistChoice(e) {
 
 // Function that clears then enables all searches
 function clearSearches() {
+    searchLocations.disabled = false;
+    searchLocations.value = "";
     busRoute.disabled = false;
     busRoute.value = "";
     busStop.disabled = false;
@@ -205,8 +262,6 @@ function applyFilters() {
                 // Bus Stop AND Bus Route valid
                 filterValuesArr.push(busStop.value);
                 filterValuesArr.push(busRoute.value);
-                console.log(filterValuesArr);
-                document.getElementById("closeBtn").click();
             } else if (!busStop.disabled && busStop.value != "" && !busRoute.disabled && busRoute.value != "") {
                 // Bus Stop AND Bus Route not valid
                 alert("Please input a valid value for Bus Stop AND Bus Route OR leave them empty!");
@@ -218,8 +273,6 @@ function applyFilters() {
             } else if (busStop.disabled && busRoute.value == "") {
                 // Bus Stop valid and Bus Route is empty
                 filterValuesArr.push(busStop.value);
-                console.log(filterValuesArr);
-                document.getElementById("closeBtn").click();
             } else if (!busStop.disabled && busStop.value != "" & busRoute.disabled) {
                 // Bus Stop not valid and Bus Route valid
                 alert("Please input a valid value for Bus Stop OR leave it empty!");
@@ -227,12 +280,6 @@ function applyFilters() {
             } else if (busStop.value == "" && busRoute.disabled) {
                 // Bus Stop empty and Bus Route valid
                 filterValuesArr.push(busRoute.value);
-                console.log(filterValuesArr);
-                document.getElementById("closeBtn").click();
-            } else if (busStop.value == "" && busRoute.value == "") {
-                // Bus Stop and Bus Route is empty
-                console.log(filterValuesArr);
-                document.getElementById("closeBtn").click();
             } else if (!busStop.disabled && busStop.value != "" && busRoute.value == "") {
                 // Bus Stop not valid and Bus Route empty
                 alert("Please input a valid value for Bus Stop OR leave it empty!");
@@ -245,67 +292,63 @@ function applyFilters() {
         } else if (selectTransitType.selectedIndex == 2) {
             // Skytrain is selected
             filterValuesArr.push(selectTransitType.value);
-            if (skytrainOption.selectedIndex == 0) {
-                // Skytrain Line is empty
-                console.log(filterValuesArr);
-                document.getElementById("closeBtn").click();
-            } else if (skytrainOption.selectedIndex == 1) {
+            if (skytrainOption.selectedIndex == 1) {
                 // Expo Line is selected
                 filterValuesArr.push(skytrainOption.value);
-                if (selectExpoLine.value == "") {
-                    // Expo Line Station is empty
-                    console.log(filterValuesArr);
-                    document.getElementById("closeBtn").click();
-                } else if (!selectExpoLine.disabled && selectExpoLine.value != "") {
+                if (!selectExpoLine.disabled && selectExpoLine.value != "") {
                     // Expo Line Station not valid
                     alert("Please input a valid value for Expo Line Station OR leave it empty!");
                     return;
                 } else if (selectExpoLine.disabled) {
                     // Expo Line Station valid
                     filterValuesArr.push(selectExpoLine.value);
-                    console.log(filterValuesArr);
-                    document.getElementById("closeBtn").click();
                 }
             } else if (skytrainOption.selectedIndex == 2) {
                 // Millenium Line is selected
                 filterValuesArr.push(skytrainOption.value);
-                if (selectMilleniumLine.value == "") {
-                    // Millenium Line Station is empty
-                    console.log(filterValuesArr);
-                    document.getElementById("closeBtn").click();
-                } else if (!selectMilleniumLine.disabled && selectMilleniumLine.value != "") {
+                if (!selectMilleniumLine.disabled && selectMilleniumLine.value != "") {
                     // Millenium Line Station not valid
                     alert("Please input a valid value for Millenium Line Station OR leave it empty!");
                     return;
                 } else if (selectMilleniumLine.disabled) {
                     // Millenium Line Station valid
                     filterValuesArr.push(selectMilleniumLine.value);
-                    console.log(filterValuesArr);
-                    document.getElementById("closeBtn").click();
                 }
             } else if (skytrainOption.selectedIndex == 3) {
                 // Millenium Line is selected
                 filterValuesArr.push(skytrainOption.value);
-                if (selectCanadaLine.value == "") {
-                    // Canada Line Station is empty
-                    console.log(filterValuesArr);
-                    document.getElementById("closeBtn").click();
-                } else if (!selectCanadaLine.disabled && selectCanadaLine.value != "") {
+                if (!selectCanadaLine.disabled && selectCanadaLine.value != "") {
                     // Canada Line Station not valid
                     alert("Please input a valid value for Canada Line Station OR leave it empty!");
                     return;
                 } else if (selectCanadaLine.disabled) {
                     // Millenium Line Station valid
                     filterValuesArr.push(selectCanadaLine.value);
-                    console.log(filterValuesArr);
-                    document.getElementById("closeBtn").click();
                 }
             }
         }
     } else if (selectCommuteType.selectedIndex == 2 || selectCommuteType.selectedIndex == 3) {
         filterValuesArr.push(selectCommuteType.value);
-        console.log(filterValuesArr);
-        document.getElementById("closeBtn").click();
-        return;
+        if (!searchLocations.disabled && searchLocations.value != "") {
+            // Search Locations is not valid
+            alert("Please input a valid value for Locations OR leave it empty!");
+            return;
+        } else if (searchLocations.disabled) {
+            // Search Locations valid
+            filterValuesArr.push(searchLocations.value);
+        }
     }
+    console.log(filterValuesArr);
+    document.getElementById("closeBtn").click();
+    updateSelectedFilters();
+
+}
+
+// Help messages 
+function requiredHelp() {
+    alert("These fields are required for posting. Please make sure they are filled or an option is seleced!");
+}
+
+function optionalHelp() {
+    alert("These fields are optional. Please make sure they are either untouched, or there is a valid input!");
 }

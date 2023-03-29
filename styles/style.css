@@ -68,6 +68,13 @@ nav>div>a>i {
 .icons {
     width: 50px;
     height: 50px;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 2px rgba(160, 160, 160, 0.7));
+}
+
+.help_icon {
+    width: 15px;
+    height: 15px;
     filter: drop-shadow(2px 2px 2px rgba(160, 160, 160, 0.7));
 }
 
@@ -163,4 +170,14 @@ nav>div>a>i {
 
 .hover {
     color: #809BCE;
+}
+
+.form-select {
+    cursor: pointer;
+}
+
+#selectedFilters {
+    display: flex;
+    column-gap: 10px;
+    justify-content: left;
 }
