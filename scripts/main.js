@@ -13,9 +13,12 @@ function displayPosts(collection) {
                 var userID = doc.data().userID;
                 var image = doc.data().image;
                 let newcard = cardTemplate.content.cloneNode(true);
+                var filters = [];
+                filters = doc.data().filters;
 
                 newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-text').innerHTML = postText;
+                newcard.querySelector('.card-p').innerHTML = filters;
                 console.log()
                 if (!(image === "")) {
                     newcard.querySelector('.card-image').src = image;
