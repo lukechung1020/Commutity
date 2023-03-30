@@ -11,7 +11,7 @@ function populateUserInfo() {
             currentUser.get()
                 .then(userDoc => {
                     //get the data fields of the user
-                    var userName = userDoc.data().name;
+                    var userName = userDoc.data().posts;
                     var userCommuteType = userDoc.data().commuteType;
                     var userCity = userDoc.data().city;
 

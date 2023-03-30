@@ -1,25 +1,4 @@
-// function readText(text) {
-//     db.collection("posts").doc(text)
-//         .onSnapshot(eachText => {
-//             console.log("current document data: " + eachText.data());
-//             document.getElementById("postText-goes-here").innerHTML = eachText.data().postText;
-//         })
-// }
 
-// readText("jBR5cx50M34PihUqlYhp");
-
-// function readTitle(title) {
-//     db.collection("posts").doc(title)
-//         .onSnapshot(eachTitle => {
-//             console.log("current document data: " + eachTitle.data());
-//             document.getElementById("title-goes-here").innerHTML = eachTitle.data().postTitle;
-//         })
-// }
-
-// readTitle("jBR5cx50M34PihUqlYhp"); 
-//------------------------------------------------------------------------------
-// Input parameter is a string representing the collection we are reading from
-//------------------------------------------------------------------------------
 
 function displayPosts(collection) {
     removePosts();
@@ -29,7 +8,6 @@ function displayPosts(collection) {
     let filteredQuery = db.collection(collection);
     if (filterValuesArr.length > 0) {
         filteredQuery = filteredQuery.where("filters", "array-contains", filterValuesArr[filterValuesArr.length - 1]).orderBy("timestamp", "desc");
-        if (filterValuesArr)
         filteredQuery.get().then(allPosts => {
             allPosts.forEach(doc => {
                 var title = doc.data().postTitle;
@@ -57,7 +35,14 @@ function displayPosts(collection) {
                 } else {
                     newcard.querySelector('.card-image').src = "./images/icon.jpg";
                 }
-
+                $(deleteButton).click(() => {
+                    if (
+                        window.confirm("Are you sure you want to delete this post?")
+                    ) {
+                        doc.ref.delete();
+                        $(newcard).remove();
+                    }
+                });
                 document.getElementById(collection + "-go-here").appendChild(newcard);
 
             })
@@ -91,7 +76,15 @@ function displayPosts(collection) {
                     } else {
                         newcard.querySelector('.card-image').src = "./images/icon.jpg";
                     }
-
+                    let deleteButton = document.querySelector('#delete-button');
+                    $(deleteButton).click(() => {
+                        if (
+                            window.confirm("Are you sure you want to delete this post?")
+                        ) {
+                            doc.ref.delete();
+                            $(newcard).remove();
+                        }
+                    });
                     document.getElementById(collection + "-go-here").appendChild(newcard);
 
                 })

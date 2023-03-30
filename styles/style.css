@@ -107,6 +107,14 @@ nav>div>a>i {
     background-color: #95B8D1 !important;
 }
 
+.bg-warning {
+    background-color: #EAC4D5 !important;
+}
+
+.bg-primary {
+    background-color: #f8f7ff !important;
+}
+
 /* .bg-warning {
     background-color: #70899b !important;
 } */
@@ -123,6 +131,11 @@ nav>div>a>i {
 .btn-primary {
     background-color: #EAC4D5 !important;
     border-color: #EAC4D5;
+}
+
+
+.btn-light {
+    background-color: #809BCE !important;
 }
 
 .text-warning {
