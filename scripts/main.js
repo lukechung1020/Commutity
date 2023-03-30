@@ -35,6 +35,7 @@ function displayPosts(collection) {
                 } else {
                     newcard.querySelector('.card-image').src = "./images/icon.jpg";
                 }
+                let deleteButton = newcard.querySelector('#delete-button');
                 $(deleteButton).click(() => {
                     if (
                         window.confirm("Are you sure you want to delete this post?")
@@ -43,6 +44,9 @@ function displayPosts(collection) {
                         $(newcard).remove();
                     }
                 });
+                if (currentUserUID != userID) {
+                    deleteButton.setAttribute("hidden", "hidden");
+                }
                 document.getElementById(collection + "-go-here").appendChild(newcard);
 
             })
@@ -76,7 +80,7 @@ function displayPosts(collection) {
                     } else {
                         newcard.querySelector('.card-image').src = "./images/icon.jpg";
                     }
-                    let deleteButton = document.querySelector('#delete-button');
+                    let deleteButton = newcard.querySelector('#delete-button');
                     $(deleteButton).click(() => {
                         if (
                             window.confirm("Are you sure you want to delete this post?")
@@ -85,6 +89,9 @@ function displayPosts(collection) {
                             $(newcard).remove();
                         }
                     });
+                    if (currentUserUID != userID) {
+                        deleteButton.setAttribute("hidden", "hidden");
+                    }
                     document.getElementById(collection + "-go-here").appendChild(newcard);
 
                 })

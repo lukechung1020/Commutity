@@ -145,7 +145,7 @@ function updateSelectedFilters() {
             let filterBtn = document.createElement("button");
             filterBtn.setAttribute("type", "button");
             filterBtn.setAttribute("class", "btn btn-light");
-            filterBtn.setAttribute("style", "padding-right: 5px;");
+            filterBtn.setAttribute("style", "margin-right: 5px;");
             filterBtn.innerHTML = item;
             selectedFilters.appendChild(filterBtn);
         });
