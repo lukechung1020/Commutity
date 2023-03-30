@@ -131,7 +131,7 @@ function resetSkytrainOptions() {
     selectCanadaLine.setAttribute("hidden", "hidden");
     selectCanadaLine.value = "";
     selectCanadaLine.disabled = false;
-    clearSearch.setAttribute("hidden","hidden");
+    clearSearch.setAttribute("hidden", "hidden");
 }
 
 // Populate location options
@@ -188,34 +188,6 @@ canada_line_stations.forEach(function (item) {
     listCanadaLine.appendChild(optionCanada);
 });
 
-// Function that populate selected filters section based on filterValuesArr
-function updateSelectedFilters() {
-    // Get pointer to selectedFilters div
-    let selectedFilters = document.getElementById("selectedFilters");
-    if (filterValuesArr.length > 0) {
-        filterValuesArr.forEach(function (item) {
-            let filterBtn = document.createElement("button");
-            filterBtn.setAttribute("type", "button");
-            filterBtn.setAttribute("class", "btn btn-light");
-            filterBtn.setAttribute("styel", "right-padd")
-            filterBtn.innerHTML = item;
-            selectedFilters.appendChild(filterBtn);
-        });
-        document.getElementById("clearFilters").removeAttribute("hidden");
-    } 
-}
-
-// Function that clears the selected filters
-function clearSelectedFilters() {
-    let selectedFilters = document.getElementById("selectedFilters");
-    while (selectedFilters.firstChild) {
-        selectedFilters.removeChild(selectedFilters.lastChild);
-    }
-    document.getElementById("clearFilters").setAttribute("hidden", "hidden");
-    resetFilters();
-    filterValuesArr = [];
-}
-
 // Function that disables putting in input after datalist option is selected
 function disableInputOnDatalistChoice(e) {
     if (!e.keyCode) {
@@ -260,8 +232,8 @@ function applyFilters() {
             filterValuesArr.push(selectTransitType.value);
             if (busStop.disabled && busRoute.disabled) {
                 // Bus Stop AND Bus Route valid
-                filterValuesArr.push(busStop.value);
-                filterValuesArr.push(busRoute.value);
+                filterValuesArr.push("Stop " + busStop.value);
+                filterValuesArr.push("Route " + busRoute.value);
             } else if (!busStop.disabled && busStop.value != "" && !busRoute.disabled && busRoute.value != "") {
                 // Bus Stop AND Bus Route not valid
                 alert("Please input a valid value for Bus Stop AND Bus Route OR leave them empty!");
@@ -272,14 +244,14 @@ function applyFilters() {
                 return;
             } else if (busStop.disabled && busRoute.value == "") {
                 // Bus Stop valid and Bus Route is empty
-                filterValuesArr.push(busStop.value);
+                filterValuesArr.push("Stop " + busStop.value);
             } else if (!busStop.disabled && busStop.value != "" & busRoute.disabled) {
                 // Bus Stop not valid and Bus Route valid
                 alert("Please input a valid value for Bus Stop OR leave it empty!");
                 return;
             } else if (busStop.value == "" && busRoute.disabled) {
                 // Bus Stop empty and Bus Route valid
-                filterValuesArr.push(busRoute.value);
+                filterValuesArr.push("Route " + busRoute.value);
             } else if (!busStop.disabled && busStop.value != "" && busRoute.value == "") {
                 // Bus Stop not valid and Bus Route empty
                 alert("Please input a valid value for Bus Stop OR leave it empty!");
@@ -339,6 +311,15 @@ function applyFilters() {
         }
     }
     console.log(filterValuesArr);
+    document.getElementById("clearFilters").setAttribute("hidden", "hidden");
+    let selectedFilters = document.getElementById("selectedFilters");
+    let numOfChildren = selectedFilters.childNodes.length;
+    if (numOfChildren > 0) {
+        while (numOfChildren > 0) {
+            selectedFilters.removeChild(selectedFilters.lastChild);
+            numOfChildren--;
+        }
+    }
     document.getElementById("closeBtn").click();
     updateSelectedFilters();
 
@@ -350,5 +331,5 @@ function requiredHelp() {
 }
 
 function optionalHelp() {
-    alert("These fields are optional. Please make sure they are either untouched, or there is a valid input!");
+    alert("These fields are optional. Please make sure they are either empty, or there is a valid input!");
 }

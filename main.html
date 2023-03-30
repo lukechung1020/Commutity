@@ -50,24 +50,132 @@
 
     <!-- the body of your page goes here -->
     <!-- stuff -->
-    <div class="container">
+    <!-- Button to open filter modal-->
+
+    <div class="container" style="padding-bottom: 60px; padding-top: 50px;">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Choose Filters
+        </button>
+        <br><b>Selected Filters:</b><br>
+        <div id="selectedFilters">
+        </div>
+        <!--Clear selected filters-->
+        <button type="button" id="clearFilters" class="btn btn-secondary btn-sm" hidden="hidden"
+            style="margin-top: 5px;" onclick="clearSelectedFilters()">Clear Filters</button>
+        <hr>
         <h1>Newer Posts</h1>
         <!-- Here is the container for cards  -->
         <div class="container">
             <div id="posts-go-here" class="row row-cols-auto">
-                <template id="postsCardTemplate">
-                    <div class="card py-2 mb-3 mx-2">
-                        <img class="card-image card-img-top" src=" ..." alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title"><span id="title-goes-here"></span></h5>
-                            <br />
-                            <p class="card-text"><span id="postText-goes-here"></span></p>
-                            <!-- <p class="card-text"><span id="timestamp-goes-here"></span></p> -->
-                            <a class="btn btn-primary card-href">See more detail</a>
-                        </div>
-                    </div>
-                </template>
+            </div>
+        </div>
+    </div>
 
+    <template id="postsCardTemplate">
+        <div class="card py-2 mb-3 mx-2">
+            <img class="card-image card-img-top img-fluid" src=" ..." alt="..." />
+            <div class="card-body">
+                <h5 class="card-title" style="margin-bottom: 0;"><span id="title-goes-here"></span></h5>
+                <div class="filters"></div>
+                <!-- <p class="card-text"><span id="postText-goes-here"></span></p> -->
+                <!-- <p class="card-text"><span id="timestamp-goes-here"></span></p> -->
+                <a class="btn btn-primary card-href" style="margin-top: 10px;">See more details</a>
+            </div>
+        </div>
+    </template>
+
+    <!-- Search Modal-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Select Filters</h5>
+                    <button type="button" class="btn-close" id="closeBtn" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!--Select form to pick commute type-->
+                    <div class="mandatory">Required*
+                        <img class="help_icon icons" onclick="requiredHelp()" src="/images/help-icon.jpeg">
+                    </div>
+                    <select class="form-select select-commute" aria-label="Default select example">
+                        <option selected>Select Commute Type</option>
+                        <option value="Transit">Transit</option>
+                        <option value="Car">Car</option>
+                        <option value="Walk">Walk</option>
+                    </select>
+
+                    <!--Select form to pick transit-->
+                    <select class="form-select select-transit" aria-label="Default select example" id="transitType"
+                        hidden="hidden">
+                        <option selected>Select Transit</option>
+                        <option value="Bus">Bus</option>
+                        <option value="Skytrain">Skytrain</option>
+                    </select>
+                    <div class="optional">Optional*
+                        <img class="help_icon" onclick="optionalHelp()" src="/images/help-icon.jpeg">
+                    </div>
+                    <!--Location search options-->
+                    <input class="form-control" id="locationSearch" onkeyup="disableInputOnDatalistChoice(event)"
+                        list="locationOptions" hidden="hidden" placeholder="Search Locations...">
+                    <datalist id="locationOptions">
+                        <!--Options populated from code in searchFilters.js-->
+                    </datalist>
+                    </input>
+                    <!--Bus search options-->
+                    <!--When an option is selected, input field is disabled, clear search button appears-->
+                    <input class="form-control" id="busStopSearch" onkeyup="disableInputOnDatalistChoice(event)"
+                        list="busStopOptions" hidden="hidden" placeholder="Search Bus Stops...">
+                    <datalist id="busStopOptions">
+                        <!--Options populated from code in searchFilters.js-->
+                    </datalist>
+                    </input>
+                    <!--When an option is selected, input field is disabled, clear search button appears-->
+                    <input class="form-control" id="busRouteSearch" onkeyup="disableInputOnDatalistChoice(event)"
+                        list="busRouteOptions" hidden="hidden" placeholder="Search Bus Routes...">
+                    <datalist id="busRouteOptions">
+                        <!--Options populated from code in searchFilters.js-->
+                    </datalist>
+                    <!--Skytrain search options-->
+                    <select class="form-select skytrainOption" aria-label="Default select example" hidden="hidden">
+                        <option selected>Select Skytrain Line</option>
+                        <option value="Expo Line">Expo Line</option>
+                        <option value="Millenium Line">Millenium Line</option>
+                        <option value="Canada Line">Canada Line</option>
+                    </select>
+                    <!--Search for Expo Line Stations-->
+                    <!--When an option is selected, input field is disabled, clear search button appears-->
+                    <input class="form-control expoLineStations" onkeyup="disableInputOnDatalistChoice(event)"
+                        list="expoStationsOptions" hidden="hidden" placeholder="Search Expo Line Stations...">
+                    <datalist id="expoStationsOptions">
+                        <!--Options populated from code in searchFilters.js-->
+                    </datalist>
+                    </input>
+                    <!--Search for Millenium Line Stations-->
+                    <!--When an option is selected, input field is disabled, clear search button appears-->
+                    <input class="form-control milleniumLineStations" onkeyup="disableInputOnDatalistChoice(event)"
+                        list="milleniumStationsOptions" hidden="hidden" placeholder="Search Millenium Line Stations...">
+                    <datalist id="milleniumStationsOptions">
+                        <!--Options populated from code in searchFilters.js-->
+                    </datalist>
+                    </input>
+                    <!--Search for Canada Line Stations-->
+                    <!--When an option is selected, input field is disabled, clear search button appears-->
+                    <input class="form-control canadaLineStations" onkeyup="disableInputOnDatalistChoice(event)"
+                        list="canadaStationsOptions" hidden="hidden" placeholder="Search Canada Line Stations...">
+                    <datalist id="canadaStationsOptions">
+                    </datalist>
+                    <!--Button that resets all searching fields-->
+                    <button type="button" class="btn btn-secondary btn-sm" id="clearSearch" style="margin-top: 5px;"
+                        onclick="clearSearches()" hidden="hidden">Clear Searches</button>
+                    </hr>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="resetFilters()">Reset</button>
+                    <button type="button" class="btn btn-primary" id="applyBtn" onclick="applyFilters()">Apply</button>
+                </div>
             </div>
         </div>
     </div>
@@ -78,11 +186,11 @@
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_BBY22.js"></script>
-
+    <script src="./scripts/transit_data.js"></script>
+    <script src="./scripts/searchFilters.js"></script>
     <script src="./scripts/main.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <!-- <script src="./scripts/script.js"></script> -->
-    <script src="./scripts/parsingText.js"></script>
+    <script src="./scripts/script.js"></script>
 
 </body>
 

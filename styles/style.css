@@ -181,3 +181,8 @@ nav>div>a>i {
     column-gap: 10px;
     justify-content: left;
 }
+
+.responsive {
+    width: 100%;
+    height: auto;
+  }
