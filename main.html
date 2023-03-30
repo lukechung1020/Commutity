@@ -56,16 +56,15 @@
     <div class="container">
         <div id="posts-go-here" class="row row-cols-auto">
             <template id="postsCardTemplate">
-                <div class="card py-2 mb-3 mx-2">
+                <div class="card shadow  py-2 mb-3 mx-2">
                     <img class="card-image card-img-top" src=" ..." alt="..." />
                     <div class="card-body">
-                        <h5 class="card-title"><span id="title-goes-here"></span></h5>
+                        <h5 class="card-title bg-warning"><span id="title-goes-here"></span></h5>
                         <br />
                         <p class="card-text"><span id="postText-goes-here"></span></p>
                         <!-- <p class="card-text"><span id="timestamp-goes-here"></span></p> -->
-                        <a class="btn btn-primary card-href">See more detail</a>
-
-                        <button type="submit" id="delete-button">Delete</button>
+                        <!-- <a class="btn btn-primary card-href">See more detail</a> -->
+                        <button type="submit" id="delete-button" class="btn btn-light">Delete</button>
                     </div>
                 </div>
             </template>
