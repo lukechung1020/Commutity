@@ -38,10 +38,10 @@ function createPost() {
         if (user) {
             var currentUser = db.collection("users").doc(user.uid)
             var userID = user.uid;
-            //get the document for current user.
+            // Gets the document for current user.
             currentUser.get()
                 .then(userDoc => {
-                    // add items
+                    // Add items
                     var postRef = db.collection("posts").doc();
                     db.collection("posts").doc(postRef.id).set({
                         userID: userID,
@@ -52,6 +52,8 @@ function createPost() {
                         timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     }).then(() => {
                         console.log("Sucessfully added post to firestore");
+                        // Add the post id of this post to an array in the current user's document
+                        // that contains the post ids that has been created by this user
                         db.collection("users").doc(userID).update({
                             posts: firebase.firestore.FieldValue.arrayUnion(postRef.id)
                         }).then(() => {
@@ -69,7 +71,7 @@ function createPost() {
     });
 }
 
-
+// Variables to be used for images
 var ImageFile;
 var fileInput = document.getElementById("post-img");
 var image = document.getElementById("preview-img");
@@ -140,6 +142,8 @@ function uploadPic(postDocID) {
 function updateSelectedFilters() {
     // Get pointer to selectedFilters div
     let selectedFilters = document.getElementById("selectedFilters");
+    // When there are elements in the filters array, create buttons and display them
+    // Display the button that clears all the filter buttons that are created when clicked
     if (filterValuesArr.length > 0) {
         filterValuesArr.forEach(function (item) {
             let filterBtn = document.createElement("button");
@@ -154,6 +158,7 @@ function updateSelectedFilters() {
 }
 
 // Function that clears the selected filters
+// Have to manually reset and hide each field because of error of exceeding call stack
 function clearSelectedFilters() {
     let selectedFilters = document.getElementById("selectedFilters");
     let numOfChildren = selectedFilters.childNodes.length;

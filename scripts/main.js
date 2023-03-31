@@ -1,12 +1,19 @@
-
-
+// Displays the posts for the main feed
+// If there are selected filters, query the posts based on those filters
+// If not, just query by the post's timestamp, having more recent posts 
+// showing up first
 function displayPosts(collection) {
+    // Whenever this function is called, remove all the posts in the feed
     removePosts();
+
+
     let cardTemplate = document.getElementById("postsCardTemplate");
-    let filterButtonTemplate = document.getElementById("filterButtonsTemplate");
-    let noImagecardTemplate = document.getElementById("n-postsCardTemplate");
     let filteredQuery = db.collection(collection);
+
+    // When there are selected filters, query by those filters
     if (filterValuesArr.length > 0) {
+        // The determinant filter is the one that is the last one in the array of filters
+        // Use that filter to query
         filteredQuery = filteredQuery.where("filters", "array-contains", filterValuesArr[filterValuesArr.length - 1]).orderBy("timestamp", "desc");
         filteredQuery.get().then(allPosts => {
             allPosts.forEach(doc => {
@@ -19,6 +26,7 @@ function displayPosts(collection) {
                 let tempPostArr = doc.data().filters;
                 let filterString = "Filters: ";
 
+                // Display the array of filters as a string on the post
                 for (let i = 0; i < tempPostArr.length; i++) {
                     if (i == tempPostArr.length - 1) {
                         filterString += tempPostArr[i];
@@ -30,11 +38,15 @@ function displayPosts(collection) {
                 newcard.querySelector('.card-title').innerHTML = title;
                 // newcard.querySelector('.card-text').innerHTML = postText;
                 newcard.querySelector('.filters').innerHTML = filterString;
+
+                // If there is no image, use a default one
                 if (!(image === "")) {
                     newcard.querySelector('.card-image').src = image;
                 } else {
                     newcard.querySelector('.card-image').src = "./images/icon.jpg";
                 }
+
+                // Adding functionality to the delete button
                 let deleteButton = newcard.querySelector('#delete-button');
                 $(deleteButton).click(() => {
                     if (
@@ -44,9 +56,13 @@ function displayPosts(collection) {
                         $(newcard).remove();
                     }
                 });
+
+                // If this post does not belong to the signed in user, hide the delete button
                 if (currentUserUID != userID) {
                     deleteButton.setAttribute("hidden", "hidden");
                 }
+
+                // Add the created post to the feed
                 document.getElementById(collection + "-go-here").appendChild(newcard);
 
             })
@@ -98,7 +114,6 @@ function displayPosts(collection) {
             })
     }
 }
-
 displayPosts("posts");
 
 // Function that populate selected filters section based on filterValuesArr
@@ -110,7 +125,7 @@ function updateSelectedFilters() {
             let filterBtn = document.createElement("button");
             filterBtn.setAttribute("type", "button");
             filterBtn.setAttribute("class", "btn btn-light");
-            filterBtn.setAttribute("style", "padding-right: 5px;");
+            filterBtn.setAttribute("style", "margin-right: 5px;");
             filterBtn.innerHTML = item;
             selectedFilters.appendChild(filterBtn);
         });

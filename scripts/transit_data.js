@@ -1,7 +1,10 @@
-// Arrays with different filter possible values
+// This file contains arrays that are used in several functions
+// These data arrays are used as the database for the searching function
+// Location includes cities from the Lower Mainland, Highway One, and some post-secondary institutions
 const location_data = [
     "Highway One",
     "Abbotsford",
+    "BCIT",
     "Burnaby",
     "Coquitlam",
     "Chilliwack",
@@ -13,30 +16,17 @@ const location_data = [
     "New Westminster",
     "Port Moody",
     "Richmond",
+    "SFU",
     "Squamish",
     "Surrey",
     "Downtown Vancouver",
     "North Vancouver",
+    "UBC",
     "Whistler",
 ]
 
-const commute_type = [
-    "Transit",
-    "Car",
-    "Walk",
-]
-
-const transit_type = [
-    "Bus",
-    "Skytain"
-]
-
-const skytrain_line = [
-    "Expo Line",
-    "Millenium Line",
-    "Canada Line",
-]
-
+// Includes all the stations that are in the Expo Line
+// All manually organized
 const expo_line_stations = [
     "Waterfront Station",
     "Burrard Station",
@@ -64,6 +54,8 @@ const expo_line_stations = [
     "Production Way-University Station",
 ]
 
+// Includes all the stations that are in the Millenium Line
+// All manually organized
 const millenium_line_stations = [
     "VCC-Clark Station",
     "Commercial-Broadway Station",
@@ -84,6 +76,8 @@ const millenium_line_stations = [
     "Lafarge Lake-Douglas Station",
 ]
 
+// Includes all the stations that are in the Canada Line
+// All manually organized
 const canada_line_stations = [
     "Waterfront Station",
     "Vancouver City Centre Station",
@@ -103,6 +97,8 @@ const canada_line_stations = [
     "Richmond-Brighouse Station",
 ]
 
+// General list of ALL skytrain stations
+// All manually organized
 const skytrain_stations = [
     "22nd Street Station",
     "29th Avenue Station",
@@ -159,6 +155,8 @@ const skytrain_stations = [
     "YVR-Airport Station",
 ]
 
+// List of all the bus routes
+// Data is parsed from text files provided by Translink
 const bus_routes = [
     "002",
     "003",
@@ -399,6 +397,8 @@ const bus_routes = [
     "900",
 ]
 
+// List of all the bus stop numbers
+// Data is parsed from the text file provided by Transit
 const bus_stops = [
     "50001",
     "59326",
