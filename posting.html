@@ -56,7 +56,7 @@
             <div class="form-group">
                 <!-- Input form for title 
                     of post-->
-                <label for="titleOfPost"><b>Post Title</b></label>
+                <label for="titleOfPost"><span style="color: red;">*</span><b>Post Title</b></label>
                 <input type="text" class="form-control" id="post-title" placeholder="Title">
             </div><br>
 
@@ -64,7 +64,7 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Choose Filters
             </button>
-            <br><b>Selected Filters:</b><br>
+            <br><span style="color: red;">*</span><b>Selected Filters:</b><br>
             <div id="selectedFilters">
             </div>
             <!--Clear selected filters-->
@@ -72,12 +72,12 @@
             <br><br>
 
             <!-- Input for for text content of post-->
-            <label for="textOfPost"><b>Text Content</b></label>
+            <label for="textOfPost"><span style="color: red;">*</span><b>Text Content</b></label>
             <textarea class="form-control" id="post-text" rows="3" placeholder="Enter text here"></textarea>
             <br>
 
             <!-- Choose file-->
-            <label for="imgOfPost"><b>Image Preview</b></label>
+            <label for="imgOfPost"><b>Image </b><span style="color: grey;">(Optional)</span></label>
             <br>
             <img id="preview-img" width=100 height=100 />
             <input type="file" id="post-img" accept="image/*" />
