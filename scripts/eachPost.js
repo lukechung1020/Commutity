@@ -16,7 +16,7 @@ function displayPostInfo() {
 
         const dateInMillis = time.toDate();
 
-        var date = new Date(dateInMillis).toDateString() + ' at ' + new Date(dateInMillis).toLocaleTimeString()
+        var date = new Date(dateInMillis).toDateString() + ' at ' + new Date(dateInMillis).toLocaleTimeString();
         // If empty image, then set default
         if (!(image === "")) {
             document.getElementById("post-image").src = image;

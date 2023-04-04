@@ -19,13 +19,17 @@ function displayPosts(collection) {
             allPosts.forEach(doc => {
                 var title = doc.data().postTitle;
                 var postText = doc.data().postText;
-                var timeStamp = doc.data().timestamp;
+                var time = doc.data().timestamp;
                 var userID = doc.data().userID;
                 var docID = doc.id;
                 var image = doc.data().image;
                 let newcard = cardTemplate.content.cloneNode(true);
                 let tempPostArr = doc.data().filters;
                 let filterString = "Filters: ";
+
+                // Format timestamp in firestore
+                const dateInMillis = time.toDate();
+                var date = new Date(dateInMillis).toDateString() + ' at ' + new Date(dateInMillis).toLocaleTimeString();
 
                 // Display the array of filters as a string on the post
                 for (let i = 0; i < tempPostArr.length; i++) {
@@ -35,9 +39,8 @@ function displayPosts(collection) {
                         filterString += tempPostArr[i] + ", ";
                     }
                 }
-
                 newcard.querySelector('.card-title').innerHTML = title;
-                // newcard.querySelector('.card-text').innerHTML = postText;
+                newcard.querySelector('.post-timestamp').innerHTML = date;
                 newcard.querySelector('.filters').innerHTML = filterString;
 
                 // If there is no image, use a default one
@@ -88,13 +91,17 @@ function displayPosts(collection) {
                 allPosts.forEach(doc => {
                     var title = doc.data().postTitle;
                     var postText = doc.data().postText;
-                    var timeStamp = doc.data().timestamp;
+                    var time = doc.data().timestamp;
                     var userID = doc.data().userID;
                     var image = doc.data().image;
                     var docID = doc.id;
                     let newcard = cardTemplate.content.cloneNode(true);
                     let tempPostArr = doc.data().filters;
                     let filterString = "";
+
+                    // Format timestamp in firestore
+                    const dateInMillis = time.toDate();
+                    var date = new Date(dateInMillis).toDateString() + ' at ' + new Date(dateInMillis).toLocaleTimeString();
 
                     for (let i = 0; i < tempPostArr.length; i++) {
                         if (i == tempPostArr.length - 1) {
@@ -105,7 +112,7 @@ function displayPosts(collection) {
                     }
 
                     newcard.querySelector('.card-title').innerHTML = title;
-                    // newcard.querySelector('.card-text').innerHTML = postText;
+                    newcard.querySelector('.post-timestamp').innerHTML = date;
                     newcard.querySelector('.filters').innerHTML = filterString;
                     if (!(image === "")) {
                         newcard.querySelector('.card-image').src = image;
