@@ -53,10 +53,10 @@ function displayPosts(collection) {
                     if (
                         window.confirm("Are you sure you want to delete this post?")
                     ) {
-                        // Get reference to image in storage
-                        var imageRef = "images/" + doc.data().image + ".jpg";
-                        var postImageRef = storageRef.child(imageRef);
-                        if (imageRed != "") {
+                        var imageRef = doc.data().image;
+                        if (imageRef != "") {
+                            imageFileName = "images/" + docID + ".jpg";
+                            var postImageRef = storage.ref().child(imageFileName);
                             // Delete the file
                             postImageRef.delete().then(() => {
                                 console.log("Image deleted successfully!");
@@ -64,9 +64,9 @@ function displayPosts(collection) {
                                 console.log("Error deleting image");
                             });
                         }
-                        // Delete from firebase and remove from post feed
                         doc.ref.delete();
                         $(newcard).remove();
+                        displayPosts("posts");
                     }
                 });
 
@@ -117,11 +117,10 @@ function displayPosts(collection) {
                         if (
                             window.confirm("Are you sure you want to delete this post?")
                         ) {
-                            doc.ref.delete();
-                            // Get reference to image in storage
-                            var imageRef = "images/" + doc.data().image + ".jpg";
-                            var postImageRef = storageRef.child(imageRef);
-                            if (imageRed != "") {
+                            var imageRef = doc.data().image;
+                            if (imageRef != "") {
+                                imageFileName = "images/" + docID + ".jpg";
+                                var postImageRef = storage.ref().child(imageFileName);
                                 // Delete the file
                                 postImageRef.delete().then(() => {
                                     console.log("Image deleted successfully!");
@@ -129,9 +128,9 @@ function displayPosts(collection) {
                                     console.log("Error deleting image");
                                 });
                             }
-                            // Delete from firebase and remove from post feed
                             doc.ref.delete();
                             $(newcard).remove();
+                            displayPosts("posts");
                         }
                     });
 
@@ -222,3 +221,4 @@ function removePosts() {
     }
 }
 
+// Function that puts window to top of the page
