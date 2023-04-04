@@ -67,8 +67,6 @@ It has the following subfolders and files:
     /footer.html             # Footer of the app (bottom navbar)
     /nav_after_login.html    # Navbar after user has logged in
     /nav_before_login.html   # Navbar before user has logged in
-
-
 ```
 
 
