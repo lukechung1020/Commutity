@@ -21,6 +21,7 @@ function displayPosts(collection) {
                 var postText = doc.data().postText;
                 var timeStamp = doc.data().timestamp;
                 var userID = doc.data().userID;
+                var docID = doc.id;
                 var image = doc.data().image;
                 let newcard = cardTemplate.content.cloneNode(true);
                 let tempPostArr = doc.data().filters;
@@ -52,10 +53,24 @@ function displayPosts(collection) {
                     if (
                         window.confirm("Are you sure you want to delete this post?")
                     ) {
+                        // Get reference to image in storage
+                        var imageRef = "images/" + doc.data().image + ".jpg";
+                        var postImageRef = storageRef.child(imageRef);
+                        if (imageRed != "") {
+                            // Delete the file
+                            postImageRef.delete().then(() => {
+                                console.log("Image deleted successfully!");
+                            }).catch((error) => {
+                                console.log("Error deleting image");
+                            });
+                        }
+                        // Delete from firebase and remove from post feed
                         doc.ref.delete();
                         $(newcard).remove();
                     }
                 });
+
+                newcard.querySelector('a').href = "eachPost.html?docID=" + docID;
 
                 // If this post does not belong to the signed in user, hide the delete button
                 if (currentUserUID != userID) {
@@ -76,9 +91,10 @@ function displayPosts(collection) {
                     var timeStamp = doc.data().timestamp;
                     var userID = doc.data().userID;
                     var image = doc.data().image;
+                    var docID = doc.id;
                     let newcard = cardTemplate.content.cloneNode(true);
                     let tempPostArr = doc.data().filters;
-                    let filterString = "Filters: ";
+                    let filterString = "";
 
                     for (let i = 0; i < tempPostArr.length; i++) {
                         if (i == tempPostArr.length - 1) {
@@ -102,9 +118,25 @@ function displayPosts(collection) {
                             window.confirm("Are you sure you want to delete this post?")
                         ) {
                             doc.ref.delete();
+                            // Get reference to image in storage
+                            var imageRef = "images/" + doc.data().image + ".jpg";
+                            var postImageRef = storageRef.child(imageRef);
+                            if (imageRed != "") {
+                                // Delete the file
+                                postImageRef.delete().then(() => {
+                                    console.log("Image deleted successfully!");
+                                }).catch((error) => {
+                                    console.log("Error deleting image");
+                                });
+                            }
+                            // Delete from firebase and remove from post feed
+                            doc.ref.delete();
                             $(newcard).remove();
                         }
                     });
+
+                    newcard.querySelector('a').href = "eachPost.html?docID=" + docID;
+
                     if (currentUserUID != userID) {
                         deleteButton.setAttribute("hidden", "hidden");
                     }

@@ -105,7 +105,7 @@ function uploadPic(postDocID) {
     // Return if there is no fileInput and change window to thanks.html
     if (fileInput.value == "") {
         console.log("no file to upload");
-        window.location.href="thanks.html";
+        window.location.href = "thanks.html";
         return;
     }
 
@@ -129,7 +129,7 @@ function uploadPic(postDocID) {
                         .then(function () {
                             console.log('Added pic URL to Firestore.');
                             // change window to thank.html
-                            window.location.href="thanks.html";
+                            window.location.href = "thanks.html";
                         })
                 })
         })

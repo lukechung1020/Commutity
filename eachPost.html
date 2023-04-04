@@ -35,7 +35,7 @@
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <link rel="stylesheet" href="./styles/style.css">
 
 </head>
 
@@ -45,20 +45,35 @@
     <!------------------------------>
 
     <!-- our own navbar goes here -->
-    <nav id="navbarPlaceholder"></nav>
+    <nav id="navbarPlaceholder" class="fixed-top"></nav>
 
     <!-- the body of your page goes here -->
     <!-- stuff -->
+    <div class="card" style="max-width: 40rem; margin-top: 30px; margin-bottom: 200px;">
+        <div class="card-body">
+            <h4 class="card-title"><span id="post-title">this hike</span></h4>
+            <div class="card-text"><b>Created by </b><small id="post-username"></small></div>
+            <div class="card-text"><b>Filters: </b><i id="post-filters"></i></div>
+            <hr>
+            <p class="card-test" id="post-content"></p>
+            <div><small class="text-muted">Posted on <span id="post-timestamp"></span></small></div>
+            <img class="card-img-bottom" id="post-image" src="" alt="Post Image">
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
 
     <!-- our own footer goes here-->
-    <nav id="footerPlaceholder"></nav>
+    <nav id="footerPlaceholder" class="fixed-bottom"></nav>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_BBY22.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <!-- <script src="./scripts/script.js"></script> -->
+    <script src="./scripts/eachPost.js"></script>
 
 </body>
 
