@@ -38,6 +38,7 @@ What we'd like to build in the future:
 ## 7. Contents of Folder
 Content of the project folder:
 
+```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing HTML file, this is what users see when you come to url
