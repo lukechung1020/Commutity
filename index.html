@@ -35,7 +35,7 @@
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <link rel="stylesheet" href="./styles/style.css"/>
+    <link rel="stylesheet" href="./styles/style.css" />
 
 </head>
 
@@ -46,20 +46,25 @@
 
     <!-- our own navbar goes here -->
     <nav id="navbarPlaceholder" class="fixed-top"></nav>
-    
+
 
     <!-- the body of your page goes here -->
     <!-- stuff -->
-    <div class="container text-center">
-        <img class="d-block mx-auto mb-4 py-3 responsive" src="./images/commute-background.jpeg" style="margin-top: 20px;" alt="">
-        <h1>Welcome!</h1>
-        Change your life as a commuter for the better!
-        <h1>
-            <a href="login.html" class="btn btn-primary btn-warning" role="button">Log in</a>
-        </h1>
-    </div>
-
-    <!-- No footer for index.html-->
+    <div class="p-5 text-center bg-image rounded-3" style="background-image: url('/images/commute-background.jpeg');
+        background-repeat: no-repeat; background-attachment: fixed; background-size: cover; width: 75vw; height: 80vh;">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+            <div class="container d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    <h1 class="mb-3">Welcome to Commutity!</h1>
+                    <h4 class="mb-3">Stay in the loop in your commute! 
+                        This app is a community app that gives you information on any issues you
+                        may encounter in your commute through user posts.
+                    </h4>
+                    <a class="btn btn-outline-light btn-lg" href="login.html" role="button">Log In</a>
+                </div>
+            </div>
+        </div>
+    </div <!-- No footer for index.html-->
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->

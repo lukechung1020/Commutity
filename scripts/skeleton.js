@@ -22,3 +22,5 @@ loadSkeleton(); //invoke the function
 
 // Global variable for the UID of the currently signed in user
 var currentUserUID;
+// Global variable for postID
+var postID;
