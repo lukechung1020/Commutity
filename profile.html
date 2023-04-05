@@ -47,17 +47,26 @@
         <p id="user-name">User Name</p>
     </div>
     <div id="profile-holder">
-        <div id="user-setting" class="borders-all setting shadow">
-            <input id="account-setting" class="submit" type="button" value="Account Setting">
-            <div id="user-setting">
+        <div id="user-setting" class="setting">
+            <!-- <input id="account-setting" class="submit btn-primary" type="button" value="Account Setting"> -->
+            <div class="container">
+                <h1 class="mt-3 text-primary bg-info" id="h1-setting">Account Setting</h1>
+                <form>
+                    <fieldset class="mb-3" id="personalInfoFields" disabled>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                        </div>
+                    </fieldset>
+                    <div class="d-flex justify-content-end mt-5">
+                        <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
+                        <span style="width: 10px"></span>
+                        <button type="button" class="btn btn-primary" onclick="saveUserInfo()">Save</button>
+                    </div>
+                </form>
             </div>
-            </a>
-        </div>
-        <div id="tag-setting" class="borders setting shadow">
-            <h1>Tag Setting</h1>
-        </div>
-        <div id="notification" class="borders setting shadow">
-            <h1>Notification Setting</h1>
+            <div id="user-name">
+            </div>
         </div>
     </div>
     <nav class="navbar d-flex justify-content-around navbar-light bg-light fixed-bottom">
