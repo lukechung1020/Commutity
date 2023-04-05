@@ -1,18 +1,12 @@
 .card {
-  display: grid;
-  grid-template-columns: 0.3fr 1fr;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  
 }
 
 .card-image {
   height: 100%;
   object-fit: cover;
-}
-
-.search-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: .25rem;
 }
 
 input {
@@ -21,4 +15,8 @@ input {
 
 .hide {
   display: none;
+}
+
+#posts-go-here {
+  justify-content: center;
 }
