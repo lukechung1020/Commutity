@@ -49,7 +49,7 @@ function displayPosts(collection) {
             if (!(image === "")) {
                 newcard.querySelector('.card-image').src = image;
             } else {
-                newcard.querySelector('.card-image').src = "./images/icon.jpg";
+                newcard.querySelector('.card-image').src = "./images/default-post-img.jpg";
             }
 
             // Adding functionality to the delete button
